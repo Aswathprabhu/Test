@@ -1,0 +1,94 @@
+
+    <div class="container">
+
+            <div class="form-wrapper">
+
+                <div>
+                    <img class="logo" src="http://localhost:4200/zoho.png" alt="logo">
+                </div>
+
+                <form action="./FileUploadHandler" id="form" method="post" enctype="multipart/form-data" novalidate>
+
+                    <div class="switch">
+                        <label>
+                            Continue Recent Migration
+                            <input id="checkbox" name="checkbox" type="checkbox">
+                            <span class="lever"></span>
+
+                        </label>
+                    </div>
+
+                    <div class="alert">
+
+                    </div>
+
+                    <div class="input-field col s6">
+                        <div>
+                            <label for="authToken">AuthToken</label>
+                        </div>
+                        {{input value=auth id="authToken" name="authToken" type="text" class="validate"}}
+                        <span id="sampleAuth" class="helper-text" {{action "populateAuth"}}>Sample AuthToken</span>
+                        <span class="hide" id="authValue">7bf3c98d66076db5bd888dbc2ec851aa</span>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <div>
+                            <label class="left" for="orgId">Organization Id</label>
+                            <img class="right" src="./loading.gif" alt="loading">
+                        </div><br>
+                        <div>
+                        {{#power-select
+                         options=doop
+                          selected=doops
+                          onchange=(action (mut doops))
+                          as |name|
+                          }}
+                            {{name}}
+                          {{/power-select}}
+                        </div>
+                    </div>
+
+                    <div id="migratingFromSelect" class="input-field">
+                        <div>
+                            <label for="migratingFrom">Migrating From</label>
+                        </div>
+                        {{#power-select
+                          options=migratingFrom
+                          selected=prevOrg
+                          searchPlaceholder="Type to Search..."
+                          onclose=(action orgFinder)
+                          onchange=(action (mut prevOrg))
+                          as |name|
+                        }}
+                          {{name}}
+                        {{/power-select}}
+                    </div>
+
+                    <div id="fileInput" class="file-field input-field">
+                        <div>
+                            <label for="file">File</label>
+                        </div>
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" name="file" id="file" accept=".xml,.zip" required>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+
+                        <span class="helper-text">
+                            <p><a href="https://docs.zoho.com/file/8eny9e980830425bd455b9218e994419b6d87" target="_blank" download>Sample File</a></p>
+                        </span>
+
+
+                    </div>
+
+
+                    <button id="submit-btn" class="btn waves-effect waves-light btn-center" type="submit">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+{{outlet}}

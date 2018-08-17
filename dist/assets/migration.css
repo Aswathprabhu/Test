@@ -1,0 +1,7 @@
+@import "home.css";
+@import "loader-compo.css";
+@import "nav-bar.css";
+@import "module-detail.css"
+*{
+    box-sizing: border-box;
+}

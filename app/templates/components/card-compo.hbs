@@ -1,0 +1,10 @@
+<div class="container">
+  <div {{action "goToModule" module}} style="float:left;min-height:30%;min-width:30%;" class='avenir tc grow bg-light-gray br3 pa3 ma2 dib bw2 shadow-5'>
+      {{loader-compo percent=70 index=0}}
+      <div>
+        <h5>{{module}}</h5>
+      </div>
+    </div>
+  
+</div>
+{{yield}}
